@@ -104,6 +104,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\MessageData.cs" />
+    <Compile Include="Models\MessageDataTemplateSelector.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Pages\PhoneBook.xaml.cs">
       <DependentUpon>PhoneBook.xaml</DependentUpon>
