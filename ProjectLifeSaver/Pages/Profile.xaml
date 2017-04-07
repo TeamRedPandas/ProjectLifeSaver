@@ -14,10 +14,6 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <Image x:Name="ProfilePicture"
-               Grid.RowSpan="2"
-               Margin="20"/>
-
         <ScrollViewer Padding="20"
                       Grid.RowSpan="2"
                       Grid.Row="1">
@@ -92,5 +88,16 @@
                 </LinearGradientBrush>
             </Grid.Background>
         </Grid>
+
+        <Viewbox Grid.RowSpan="2"
+                 Margin="20"
+                 HorizontalAlignment="Center"
+                 VerticalAlignment="Center">
+            <Image x:Name="ProfilePicture"
+                   Source="ms-appx:///DebugAssets/04 150p-01.jpg"
+                   Width="100"
+                   Height="100"
+                   Stretch="UniformToFill"/>
+        </Viewbox>
     </Grid>
 </Page>
