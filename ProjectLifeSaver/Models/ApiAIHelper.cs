@@ -32,7 +32,7 @@ namespace ProjectLifeSaver.Models
         public async void GetResponse()
         {
             var msg = await TryGetMessegeAsync(MSG_INIT);
-                
+            
 
         }
 

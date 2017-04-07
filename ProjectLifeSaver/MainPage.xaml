@@ -17,5 +17,11 @@
             <PivotItem x:Name="PiI_History"/>
             <PivotItem x:Name="PiI_Profile"/>
         </ui:AdvancedPivot>
+
+        <Grid x:Name="ApiAiLog"
+              Background="#BFFFFFFF"
+              Visibility="{x:Bind AiLogVisibility, Mode=OneWay}">
+            
+        </Grid>
     </Grid>
 </Page>
