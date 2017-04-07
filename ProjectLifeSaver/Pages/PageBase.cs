@@ -1,7 +1,7 @@
 ﻿using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
 
-namespace ProjectLifeSaver
+namespace ProjectLifeSaver.Pages
 {
     public abstract class PageBase : Page
     {
