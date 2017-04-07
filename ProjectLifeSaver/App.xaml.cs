@@ -37,7 +37,7 @@ namespace ProjectLifeSaver
 
                 Window.Current.Content = rootFrame;
 
-                BarsHelperColorsSetterColorInfo barsColorInfo = new BarsHelperColorsSetterColorInfo((Color)Resources["LifeSaverAccentColor"], Colors.White);
+                BarsHelperColorsSetterColorInfo barsColorInfo = new BarsHelperColorsSetterColorInfo((Color)Resources["SystemAccentColor"], Colors.White);
                 await BarsHelper.Current.SetCustomTitleBarColorsSetterAsync(new BarsHelperTitleBarColorsSetter(true, null, barsColorInfo, barsColorInfo));
                 await BarsHelper.Current.SetCustomStatusBarColorsSetterAsync(new BarsHelperStatusBarColorsSetter(1.0, true, null, barsColorInfo, barsColorInfo));
                 await BarsHelper.Current.InitializeForCurrentViewAsync();

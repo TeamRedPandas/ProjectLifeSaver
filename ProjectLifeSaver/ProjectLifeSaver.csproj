@@ -103,8 +103,8 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs" />
-    <Compile Include="Pages\Dial.xaml.cs">
-      <DependentUpon>Dial.xaml</DependentUpon>
+    <Compile Include="Pages\PhoneBook.xaml.cs">
+      <DependentUpon>PhoneBook.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
@@ -180,7 +180,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\Dial.xaml">
+    <Page Include="Pages\PhoneBook.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

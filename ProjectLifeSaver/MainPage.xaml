@@ -8,8 +8,8 @@
       >
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ui:AdvancedPivot x:Name="APi_Main"
-                          HeaderBackground="{StaticResource LifeSaverAccentBrush}"
-                          RequestedTheme="{StaticResource LifeSaverAccentTheme}"
+                          HeaderBackground="{ThemeResource SystemControlBackgroundAccentBrush}"
+                          RequestedTheme="{StaticResource AccentTheme}"
                           Loaded="APi_Main_Loaded"
                           >
             <PivotItem x:Name="PiI_Home"/>

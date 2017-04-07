@@ -9,9 +9,8 @@
                 <ResourceDictionary Source="ms-appx:///UWPHelper/Resources.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
-            <Color x:Key="LifeSaverAccentColor">#E52D29</Color>
-            <SolidColorBrush x:Key="LifeSaverAccentBrush" Color="{StaticResource LifeSaverAccentColor}"/>
-            <ElementTheme x:Key="LifeSaverAccentTheme">Dark</ElementTheme>
+            <Color x:Key="SystemAccentColor">#E52D29</Color>
+            <ElementTheme x:Key="AccentTheme">Dark</ElementTheme>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
