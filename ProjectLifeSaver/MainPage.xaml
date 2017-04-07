@@ -1,20 +1,19 @@
 ﻿<Page x:Class="ProjectLifeSaver.MainPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:models="using:ProjectLifeSaver.Models"
       xmlns:ui="using:UWPHelper.UI"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       mc:Ignorable="d"
-      xmlns:models="using:ProjectLifeSaver.Models"
       >
-
     <Page.Resources>
-        <DataTemplate x:Key="AssistentMessage" x:DataType="models:MessageData">
+        <DataTemplate x:Key="AssistantMessage" x:DataType="models:MessageData">
             <StackPanel HorizontalAlignment="Left"
                         Margin="10,10,60,10">
                 <TextBlock Text="Assistant"/>
                 <TextBlock x:Name="TB_content"
-                           Text="{x:Bind Message}"/>
+                           Text="{x:Bind Message, Mode=OneWay}"/>
             </StackPanel>
         </DataTemplate>
         <DataTemplate x:Key="MeMessage" x:DataType="models:MessageData">
@@ -22,15 +21,14 @@
                         Margin="10,10,60,10">
                 <TextBlock Text="Assistant"/>
                 <TextBlock x:Name="TB_content"
-                           Text="{x:Bind Message}"/>
+                           Text="{x:Bind Message, Mode=OneWay}"/>
             </StackPanel>
         </DataTemplate>
 
         <models:MessageDataTemplateSelector x:Key="MessageDataTemplateSelector"
                                             Me="{StaticResource MeMessage}"
-                                            Assistant="{StaticResource AssistantMessage}">
-
-        </models:MessageDataTemplateSelector>
+                                            Assistant="{StaticResource AssistantMessage}"
+                                            />
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ui:AdvancedPivot x:Name="APi_Main"
@@ -48,13 +46,8 @@
               Background="#BFFFFFFF"
               Visibility="{x:Bind AiLogVisibility, Mode=OneWay}">
             <ListView x:Name="LV_ApiAiLog"
-                      ItemTemplateSelector="{StaticResource MessageDataTemplateSelector}">
-                <ListView.ItemTemplate>
-                    <DataTemplate x:DataType="models:MessageData">
-                        
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                      ItemTemplateSelector="{StaticResource MessageDataTemplateSelector}"
+                      />
         </ScrollViewer>
     </Grid>
 </Page>
