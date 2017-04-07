@@ -1,0 +1,56 @@
+from sense_hat import SenseHat
+from time import sleep
+
+sense = SenseHat()
+
+r = [255, 0, 0]
+o = [255, 127, 0]
+y = [255, 255, 0]
+g = [0, 255, 0]
+b = [0, 0, 255]
+i = [75, 0, 130]
+v = [159, 0, 255]
+e = [0, 0, 0]
+
+lowBeat = [
+    e,e,e,e,e,e,e,e,
+    e,e,e,e,e,e,e,e,
+    e,e,r,e,e,e,e,e,
+    r,r,e,r,r,e,r,r,
+    e,e,e,e,e,e,e,e,
+    e,e,e,e,e,e,e,e,
+    e,e,e,e,e,e,e,e
+    ]
+
+normalBeat = [
+    e,e,e,e,e,e,e,e,
+    e,e,g,e,e,e,e,e,
+    e,g,e,g,e,e,e,e,
+    g,g,e,g,g,e,g,g,
+    e,e,e,e,g,e,g,e,
+    e,e,e,e,e,g,e,e,
+    e,e,e,e,e,e,e,e,
+    e,e,e,e,e,e,e,e
+    ]
+highBeat = [
+    e,e,r,e,e,e,e,e,
+    e,r,e,r,e,e,e,e,
+    e,r,e,r,e,e,e,e,
+    r,r,e,r,r,e,r,r,
+    e,e,e,e,r,e,r,e,
+    e,e,e,e,r,e,r,e,
+    e,e,e,e,e,r,e,e,
+    e,e,e,e,e,e,e,e
+    ]
+while True:
+    p = sense.get_pressure()
+    if p > 1000 and p < 1002:
+        sense.set_pixels(lowBeat)
+    elif p > 1002 and p < 1004:
+        sense.set_pixels(normalBeat)
+    elif p > 1004 and p < 1020:
+        sense.set_pixels(highBeat)
+    else:
+        sense.clear()
+    
+    
