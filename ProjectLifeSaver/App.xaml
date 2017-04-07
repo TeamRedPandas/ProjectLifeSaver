@@ -1,8 +1,17 @@
-﻿<Application
-    x:Class="ProjectLifeSaver.App"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:ProjectLifeSaver"
-    RequestedTheme="Light">
+﻿<Application x:Class="ProjectLifeSaver.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             RequestedTheme="Light"
+             >
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///UWPHelper/Resources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
 
+            <Color x:Key="LifeSaverAccentColor">#E52D29</Color>
+            <SolidColorBrush x:Key="LifeSaverAccentBrush" Color="{StaticResource LifeSaverAccentColor}"/>
+            <ElementTheme x:Key="LifeSaverAccentTheme">Dark</ElementTheme>
+        </ResourceDictionary>
+    </Application.Resources>
 </Application>
