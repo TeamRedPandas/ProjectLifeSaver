@@ -11,9 +11,10 @@ namespace ProjectLifeSaver.Pages
 
             Transitions = new TransitionCollection()
             {
-                new NavigationThemeTransition()
+                new EntranceThemeTransition()
                 {
-                    DefaultNavigationTransitionInfo = new DrillInNavigationTransitionInfo()
+                    FromHorizontalOffset = 0,
+                    FromVerticalOffset   = 0
                 }
             };
         }

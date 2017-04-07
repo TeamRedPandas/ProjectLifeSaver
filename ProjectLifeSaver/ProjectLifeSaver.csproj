@@ -102,7 +102,7 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\Profile.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Pages\Dial.xaml.cs">
       <DependentUpon>Dial.xaml</DependentUpon>
     </Compile>
@@ -167,8 +167,8 @@
     <Content Include="Assets\Icons\Wide310x150Logo.scale-150.png" />
     <Content Include="Assets\Icons\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Icons\Wide310x150Logo.scale-400.png" />
-    <Content Include="DebugAssets\04 150p-01.jpg" />
-    <Content Include="DebugAssets\HeartBeat.gif" />
+    <Content Include="Assets\04 150p-01.jpg" />
+    <Content Include="Assets\HeartBeat.gif" />
     <Content Include="Properties\Default.rd.xml" />
   </ItemGroup>
   <ItemGroup>
