@@ -4,11 +4,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static ProjectLifeSaver.Models.Blood;
 
 namespace ProjectLifeSaver.Models
 {
-    class Profile
+    class User
     {
         private static DateTime ZeroDateTime
         {
@@ -25,11 +24,11 @@ namespace ProjectLifeSaver.Models
         {
             get
             {
-                return (Profile.ZeroDateTime + (DateTime.Now - BirthDate)).Year - 1;
+                return (User.ZeroDateTime + (DateTime.Now - BirthDate)).Year - 1;
             }
         }
 
-        public Profile(string Name, DateTime BirthDate, BloodType Blood, string Description)
+        public User(string Name, DateTime BirthDate, BloodType Blood, string Description)
         {
             this.Name = Name;
             this.BirthDate = BirthDate;

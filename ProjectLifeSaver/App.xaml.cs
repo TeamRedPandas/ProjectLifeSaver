@@ -2,7 +2,9 @@
 using UWPHelper.UI;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.Foundation;
 using Windows.UI;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -35,10 +37,12 @@ namespace ProjectLifeSaver
 
                 Window.Current.Content = rootFrame;
 
-                BarsHelperColorsSetterColorInfo barsColorInfo = new BarsHelperColorsSetterColorInfo((Color)Resources["LifeSaverAccentColor"], Colors.White);
+                BarsHelperColorsSetterColorInfo barsColorInfo = new BarsHelperColorsSetterColorInfo((Color)Resources["SystemAccentColor"], Colors.White);
                 await BarsHelper.Current.SetCustomTitleBarColorsSetterAsync(new BarsHelperTitleBarColorsSetter(true, null, barsColorInfo, barsColorInfo));
                 await BarsHelper.Current.SetCustomStatusBarColorsSetterAsync(new BarsHelperStatusBarColorsSetter(1.0, true, null, barsColorInfo, barsColorInfo));
                 await BarsHelper.Current.InitializeForCurrentViewAsync();
+
+                ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(420, 520));
             }
             
             LaunchActivatedEventArgs launchArgs = args as LaunchActivatedEventArgs;

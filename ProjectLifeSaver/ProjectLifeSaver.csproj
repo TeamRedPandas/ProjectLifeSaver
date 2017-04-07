@@ -102,9 +102,9 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\Profile.cs" />
-    <Compile Include="Pages\Dial.xaml.cs">
-      <DependentUpon>Dial.xaml</DependentUpon>
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Pages\PhoneBook.xaml.cs">
+      <DependentUpon>PhoneBook.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
@@ -167,8 +167,8 @@
     <Content Include="Assets\Icons\Wide310x150Logo.scale-150.png" />
     <Content Include="Assets\Icons\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Icons\Wide310x150Logo.scale-400.png" />
-    <Content Include="DebugAssets\04 150p-01.jpg" />
-    <Content Include="DebugAssets\HeartBeat.gif" />
+    <Content Include="Assets\04 150p-01.jpg" />
+    <Content Include="Assets\HeartBeat.gif" />
     <Content Include="Properties\Default.rd.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -180,7 +180,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\Dial.xaml">
+    <Page Include="Pages\PhoneBook.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,30 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ProjectLifeSaver.Models
+﻿namespace ProjectLifeSaver.Models
 {
-    public static class Blood
+    public enum BloodType
     {
-        public enum BloodType
-        {
-            APositive,
-            ANegative,
-            ANull,
+        APositive,
+        ANegative,
+        ANull,
 
-            BPositive,
-            BNegative,
-            BNull,
+        BPositive,
+        BNegative,
+        BNull,
 
-            ABPositive,
-            ABNegative,
-            ABNull,
+        ABPositive,
+        ABNegative,
+        ABNull,
 
-            OPositive,
-            ONegative,
-            ONull,
-        }
+        OPositive,
+        ONegative,
+        ONull
     }
 }
