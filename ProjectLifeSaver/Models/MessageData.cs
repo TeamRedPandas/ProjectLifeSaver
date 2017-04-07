@@ -1,9 +1,5 @@
 ﻿using NotifyPropertyChangedBase;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProjectLifeSaver.Models
 {
@@ -19,7 +15,7 @@ namespace ProjectLifeSaver.Models
             get { return (string)GetValue(); }
             set { SetValue(value); }
         }
-        public DateTime Recieved
+        public DateTime Received
         {
             get { return (DateTime)GetValue(); }
             set { SetValue(value); }
@@ -29,7 +25,7 @@ namespace ProjectLifeSaver.Models
         {
             RegisterProperty(nameof(Message), typeof(string), null);
             RegisterProperty(nameof(Sender), typeof(string), null);
-            RegisterProperty(nameof(Recieved), typeof(DateTime), new DateTime());
+            RegisterProperty(nameof(Received), typeof(DateTime), new DateTime());
         }
     }
 }
