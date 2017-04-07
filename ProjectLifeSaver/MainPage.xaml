@@ -18,10 +18,10 @@
             <PivotItem x:Name="PiI_Profile"/>
         </ui:AdvancedPivot>
 
-        <Grid x:Name="ApiAiLog"
+        <ScrollViewer x:Name="SV_ApiAiLog"
               Background="#BFFFFFFF"
               Visibility="{x:Bind AiLogVisibility, Mode=OneWay}">
-            
-        </Grid>
+            <ListView x:Name="LV_ApiAiLog"/>
+        </ScrollViewer>
     </Grid>
 </Page>

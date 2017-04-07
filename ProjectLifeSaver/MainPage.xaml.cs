@@ -9,6 +9,8 @@ namespace ProjectLifeSaver
     {
         public static MainPage Current { get; private set; }
 
+        //public List
+
         public Visibility AiLogVisibility
         {
             get { return (Visibility)GetValue(AiLogVisibilityProperty); }

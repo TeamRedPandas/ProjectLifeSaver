@@ -8,7 +8,7 @@ namespace ProjectLifeSaver.Models
         private string ApiAiToken = "d495e29a70a8476dafc7681fd740e594";
         private ApiAi apiAi;
 
-        private const string MSG_INIT = "initial_messege";
+        private const string MSG_INIT = "initial_message";
 
         public ApiAiHelper()
         {
@@ -16,7 +16,7 @@ namespace ProjectLifeSaver.Models
             apiAi = new ApiAi(config);
         }
 
-        public async Task<string> TryGetMessegeAsync(string msg)
+        public async Task<string> TryGetMessageAsync(string msg)
         {
             try
             {
@@ -31,11 +31,9 @@ namespace ProjectLifeSaver.Models
 
         public async void GetResponse()
         {
-            var msg = await TryGetMessegeAsync(MSG_INIT);
+            var msg = await TryGetMessageAsync(MSG_INIT);
             
 
         }
-
-
     }
 }
