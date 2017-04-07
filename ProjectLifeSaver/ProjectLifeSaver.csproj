@@ -97,6 +97,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\ApiAiHelper.cs" />
     <Compile Include="Models\Blood.cs" />
     <Compile Include="Models\Disease.cs" />
     <Compile Include="MainPage.xaml.cs">
