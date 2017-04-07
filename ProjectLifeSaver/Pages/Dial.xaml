@@ -7,18 +7,54 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid>
+    <Grid VerticalAlignment="Top">
+        
         <!-- Search Font Icon &#xE11A;-->
-        <Button Style="{StaticResource TransparentButton}"
-                FontFamily="Segoe MDL2 Assets"
-                Content="&#xE11A;"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Top"
-                Width="48"
-                Height="48"
-                Margin="10"
-                Foreground="White"
-                FontSize="24"/>
 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox PlaceholderText="SEARCH"
+                     Margin="10,10,0,10"
+                     TextAlignment="Left"
+                     FontSize="24"/>
+
+            <Button Style="{StaticResource TransparentButton}"
+                    FontFamily="Segoe MDL2 Assets"
+                    Content="&#xE11A;"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Width="48"
+                    Height="48"
+                    Margin="10"
+                    Foreground="White"
+                    FontSize="24"
+                    Grid.Column="1"/>
+        </Grid>
+
+        <StackPanel Grid.Row="1">
+            <StackPanel>
+                <TextBlock Text="Current country"
+                           Foreground="#CCFFFFFF" />
+                <ScrollViewer>
+                    <ListView x:Name="current_country_dial"></ListView>
+                </ScrollViewer>
+            </StackPanel>
+            <StackPanel Grid.Row="1">
+                <TextBlock Text="Current country"
+                           Foreground="#CCFFFFFF" />
+                <ScrollViewer>
+                    <ListView x:Name="other_dial"></ListView>
+                </ScrollViewer>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>
