@@ -97,12 +97,15 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\ApiAiHelper.cs" />
     <Compile Include="BloodTypeToStringConverter.cs" />
     <Compile Include="Models\BloodType.cs" />
     <Compile Include="Models\Disease.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\MessageData.cs" />
+    <Compile Include="Models\MessageDataTemplateSelector.cs" />
     <Compile Include="Models\ProfileData.cs" />
     <Compile Include="Pages\PhoneBook.xaml.cs">
       <DependentUpon>PhoneBook.xaml</DependentUpon>

@@ -7,8 +7,24 @@ namespace ProjectLifeSaver
 {
     public sealed partial class MainPage : Page
     {
+        public static MainPage Current { get; private set; }
+
+        //public List
+
+        public Visibility AiLogVisibility
+        {
+            get { return (Visibility)GetValue(AiLogVisibilityProperty); }
+            set { SetValue(AiLogVisibilityProperty, value); }
+        }
+        
+        public static readonly DependencyProperty AiLogVisibilityProperty = DependencyProperty.Register(nameof(AiLogVisibility),
+                                                                                                        typeof(Visibility),
+                                                                                                        typeof(MainPage),
+                                                                                                        new PropertyMetadata(Visibility.Collapsed));
+        
         public MainPage()
         {
+            Current = this;
             InitializeComponent();
         }
 

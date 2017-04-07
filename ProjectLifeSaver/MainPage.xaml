@@ -5,7 +5,33 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       mc:Ignorable="d"
+      xmlns:models="using:ProjectLifeSaver.Models"
       >
+
+    <Page.Resources>
+        <DataTemplate x:Key="AssistentMessage" x:DataType="models:MessageData">
+            <StackPanel HorizontalAlignment="Left"
+                        Margin="10,10,60,10">
+                <TextBlock Text="Assistant"/>
+                <TextBlock x:Name="TB_content"
+                           Text="{x:Bind Message}"/>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="MeMessage" x:DataType="models:MessageData">
+            <StackPanel HorizontalAlignment="Right"
+                        Margin="10,10,60,10">
+                <TextBlock Text="Assistant"/>
+                <TextBlock x:Name="TB_content"
+                           Text="{x:Bind Message}"/>
+            </StackPanel>
+        </DataTemplate>
+
+        <models:MessageDataTemplateSelector x:Key="MessageDataTemplateSelector"
+                                            Me="{StaticResource MeMessage}"
+                                            Assistant="{StaticResource AssistantMessage}">
+
+        </models:MessageDataTemplateSelector>
+    </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ui:AdvancedPivot x:Name="APi_Main"
                           HeaderBackground="{ThemeResource SystemControlBackgroundAccentBrush}"
@@ -17,5 +43,18 @@
             <PivotItem x:Name="PiI_History"/>
             <PivotItem x:Name="PiI_Profile"/>
         </ui:AdvancedPivot>
+
+        <ScrollViewer x:Name="SV_ApiAiLog"
+              Background="#BFFFFFFF"
+              Visibility="{x:Bind AiLogVisibility, Mode=OneWay}">
+            <ListView x:Name="LV_ApiAiLog"
+                      ItemTemplateSelector="{StaticResource MessageDataTemplateSelector}">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:MessageData">
+                        
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollViewer>
     </Grid>
 </Page>
