@@ -4,100 +4,89 @@
                 xmlns:local="using:ProjectLifeSaver.Pages"
                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
                 mc:Ignorable="d"
+                SizeChanged="OnSizeChanged"
                 >
-
-    <Grid>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.25*"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <ScrollViewer Padding="20"
-                      Grid.RowSpan="2"
-                      Grid.Row="1">
-            <Grid Margin="0,80,0,0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
+        <Border x:Name="Bo_ProfilePictureBackground"
+                Background="{ThemeResource SystemControlBackgroundAccentBrush}"
+                Grid.Row="0"
+                />
 
-                <StackPanel BorderBrush="#7FFFFFFF"
-                            BorderThickness="0,1">
-                    <TextBlock Text="Name"
-                               Foreground="#CCFFFFFF" />
-                    <TextBlock x:Name="TB_Name"
-                               Text="-----"
-                               FontSize="24"
-                               Foreground="#FFFFFFFF" />
-                </StackPanel>
+        <Border Background="#19FFFFFF"
+                Grid.Row="0"
+                />
 
-                <StackPanel Grid.Row="1"
-                            BorderBrush="#7FFFFFFF"
-                            BorderThickness="0,0,0,1">
-                    <TextBlock Text="Age"
-                               Foreground="#CCFFFFFF" />
-                    <TextBlock x:Name="TB_Age"
-                               Text="-----"
-                               FontSize="24"
-                               Foreground="#FFFFFFFF"/>
-                </StackPanel>
+        <Border x:Name="Bo_ProfilePicture"
+                BorderThickness="3"
+                BorderBrush="DarkRed"
+                Height="{x:Bind Bo_ProfilePictureBackground.ActualHeight}"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Margin="0,25,0,0"
+                Grid.RowSpan="2"
+                >
+            <Image Source="ms-appx:///Assets/profile.jpg"
+                   Stretch="Uniform"
+                   />
+        </Border>
 
-                <StackPanel Grid.Row="2"
-                            BorderBrush="#7FFFFFFF"
-                            BorderThickness="0,0,0,1">
-                    <TextBlock Text="Blood Type"
-                               Foreground="#CCFFFFFF" />
-                    <TextBlock x:Name="TB_BloodType"
-                               Text="-----"
-                               FontSize="24"
-                               Foreground="#FFFFFFFF" />
-                </StackPanel>
+        <ScrollViewer Padding="{StaticResource ContentMargin}"
+                      VerticalScrollBarVisibility="Auto"
+                      Grid.Row="2"
+                      >
+            <StackPanel>
+                <TextBlock Text="{x:Bind ProfileData.Name, Converter={StaticResource StringToUpperCaseConverter}, Mode=OneWay}"
+                           FontWeight="SemiBold"
+                           FontSize="24"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,10"
+                           />
 
-                <StackPanel Grid.Row="3"
-                            BorderBrush="#7FFFFFFF"
-                            BorderThickness="0,0,0,1">
-                    <TextBlock Text="Diseases"
-                               Foreground="#CCFFFFFF" />
-                    <ListView x:Name="LV_Diseases"/>
-                </StackPanel>
+                <controls:HeaderedTextBlock Header="Age"
+                                            Text="{x:Bind ProfileData.Age, Mode=OneWay}"
+                                            />
 
-                <StackPanel Grid.Row="4"
-                            BorderBrush="#7FFFFFFF"
-                            BorderThickness="0,0,0,1">
-                    <TextBlock Text="Desctiption"
-                               Foreground="#CCFFFFFF" />
-                    <TextBlock x:Name="TB_Descrption"
-                               Text="-----"
-                               FontSize="24" 
-                               Foreground="#FFFFFFFF" />
-                </StackPanel>
-            </Grid>
+                <controls:HeaderedTextBlock Header="Birth date"
+                                            Text="{x:Bind ProfileData.BirthDate, Converter={StaticResource StringFormatConverter}, ConverterParameter='{}{0:d}', Mode=OneWay}"
+                                            />
+
+                <controls:HeaderedTextBlock Header="Blood type"
+                                            Text="{x:Bind ProfileData.BloodType, Converter={StaticResource BloodTypeToStringConverter}, Mode=OneWay}"
+                                            />
+
+                <controls:HeaderedTextBlock Header="Additional info"
+                                            Text="{x:Bind ProfileData.AdditionalInfo, Mode=OneWay}"
+                                            />
+
+                <ListView Header="Diseases">
+
+                </ListView>
+            </StackPanel>
         </ScrollViewer>
-
-        <Grid Grid.RowSpan="2">
-            <Grid.Background>
-                <LinearGradientBrush EndPoint="0.5,1"
-                                     StartPoint="0.5,0">
-                    <GradientStop Color="#19FFFFFF" Offset="0.5"/>
-                    <GradientStop Color="Transparent" Offset="1"/>
-                </LinearGradientBrush>
-            </Grid.Background>
-        </Grid>
 
         <Viewbox Grid.RowSpan="2"
                  Margin="20"
                  HorizontalAlignment="Center"
                  VerticalAlignment="Center">
-            <Image x:Name="Img_ProfilePicture"
-                   Source="Assets/04 150p-01.jpg"
-                   Width="100"
-                   Height="100"
-                   Stretch="UniformToFill"/>
         </Viewbox>
+
+        <Button Content="&#xE70F;"
+                FontFamily="Segoe MDL2 Assets"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Width="48"
+                Height="48"
+                RequestedTheme="Dark"
+                Style="{StaticResource TransparentButton}"
+                Grid.Row="0"
+                />
     </Grid>
 </local:PageBase>
