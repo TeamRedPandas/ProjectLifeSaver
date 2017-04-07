@@ -1,4 +1,5 @@
-﻿using Windows.UI.Xaml.Controls;
+﻿using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
 namespace ProjectLifeSaver
 {
@@ -7,6 +8,18 @@ namespace ProjectLifeSaver
         public MainPage()
         {
             InitializeComponent();
+        }
+
+        private void APi_Main_Loaded(object sender, RoutedEventArgs e)
+        {
+            foreach (PivotItem pivotItem in APi_Main.Items)
+            {
+                //Frame contentFrame = new Frame();
+                //contentFrame.Navigate(Type.GetType("ProjectLifeSaver." + pivotItem.Name.Remove(0, 4)));
+                //
+                //pivotItem.Header = ((PageBase)contentFrame.Content).Name;
+                pivotItem.Header = pivotItem.Name.Remove(0, 4);
+            }
         }
     }
 }

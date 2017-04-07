@@ -4,6 +4,14 @@
              RequestedTheme="Light"
              >
     <Application.Resources>
-        <ResourceDictionary Source="ms-appx:///UWPHelper/Resources.xaml"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///UWPHelper/Resources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <Color x:Key="LifeSaverAccentColor">#E52D29</Color>
+            <SolidColorBrush x:Key="LifeSaverAccentBrush" Color="{StaticResource LifeSaverAccentColor}"/>
+            <ElementTheme x:Key="LifeSaverAccentTheme">Dark</ElementTheme>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
