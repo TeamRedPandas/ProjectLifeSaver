@@ -18,7 +18,7 @@ namespace ProjectLifeSaver
                 //contentFrame.Navigate(Type.GetType("ProjectLifeSaver." + pivotItem.Name.Remove(0, 4)));
                 //
                 //pivotItem.Header = ((PageBase)contentFrame.Content).Name;
-                pivotItem.Header = pivotItem.Name.Remove(0, 4);
+                pivotItem.Header = pivotItem.Name.Remove(0, 4).ToUpper();
             }
         }
     }
