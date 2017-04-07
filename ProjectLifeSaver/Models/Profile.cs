@@ -10,16 +10,29 @@ namespace ProjectLifeSaver.Models
 {
     class Profile
     {
+        private static DateTime ZeroDateTime
+        {
+            get { return new DateTime(1, 1, 1); }
+        }
+
         public string Name { get; set; }
-        public byte Age { get; set; }
+        public DateTime BirthDate { get; set; }
         public BloodType Blood { get; set; }
         public string Description { get; set; }
         public ObservableCollection<Disease> Diseases { get; }
 
-        public Profile(string Name, byte Age, BloodType Blood, string Description)
+        public int Age
+        {
+            get
+            {
+                return (Profile.ZeroDateTime + (DateTime.Now - BirthDate)).Year - 1;
+            }
+        }
+
+        public Profile(string Name, DateTime BirthDate, BloodType Blood, string Description)
         {
             this.Name = Name;
-            this.Age = Age;
+            this.BirthDate = BirthDate;
             this.Blood = Blood;
             this.Description = Description;
         }
