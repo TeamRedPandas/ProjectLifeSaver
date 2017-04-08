@@ -25,27 +25,41 @@
             <StackPanel>
                 <StackPanel.Resources>
                     <DataTemplate x:Key="NumberDataTemplate" x:DataType="models:Number">
-                        <StackPanel Orientation="Horizontal">
-                            <StackPanel.Resources>
+                        <Grid>
+                            <Grid.Resources>
                                 <Style TargetType="TextBlock">
                                     <Setter Property="Margin" Value="5,0,0,0"/>
                                 </Style>
-                            </StackPanel.Resources>
+                            </Grid.Resources>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.22*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
                             
                             <!--
                             <Image Source="{x:Bind Type, Converter={StaticResource NumberTypeToIconConverter}, Mode=OneWay}"/>
                             -->
                             
                             <TextBlock FontWeight="SemiBold">
-                                            <Run Text="{x:Bind Type, Converter={StaticResource NumberTypeToStringConverter}, Mode=OneWay}"/>:
+                                <Run Text="{x:Bind Type, Converter={StaticResource NumberTypeToStringConverter}, Mode=OneWay}"/>:
                             </TextBlock>
-                            <TextBlock Text="{x:Bind DialNumber, Mode=OneWay}"/>
-                        </StackPanel>
+                            <TextBlock Text="{x:Bind DialNumber, Mode=OneWay}"
+                                       Grid.Column="1"
+                                       />
+                        </Grid>
                     </DataTemplate>
                     
                     <Style TargetType="ListView">
                         <Setter Property="ItemTemplate" Value="{StaticResource NumberDataTemplate}"/>
                         <Setter Property="SelectionMode" Value="None"/>
+                        <Setter Property="ItemContainerStyle">
+                            <Setter.Value>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                    <Setter Property="Padding" Value="10,0"/>
+                                </Style>
+                            </Setter.Value>
+                        </Setter>
                     </Style>
                 </StackPanel.Resources>
                 
