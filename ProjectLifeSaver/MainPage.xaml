@@ -73,7 +73,6 @@
                                         <TextBlock Text="{x:Bind Received, Mode=OneWay}"
                                                    HorizontalAlignment="Left"
                                                    Style="{StaticResource DescriptionTextBlock}"
-                                                   RequestedTheme="Light"
                                                    />
                                     </StackPanel>
                                 </StackPanel>

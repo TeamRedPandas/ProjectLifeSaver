@@ -26,15 +26,10 @@ namespace ProjectLifeSaver
             Suspending += OnSuspending;
         }
 
-        public Task SetDefaultBarsColors()
+        public async Task SetDefaultBarsColors()
         {
-            return SetBarsColors(defaultBarsColorInfo);
-        }
-
-        public async Task SetBarsColors(BarsHelperColorsSetterColorInfo barsColorInfo)
-        {
-            await BarsHelper.Current.SetCustomTitleBarColorsSetterAsync(new BarsHelperTitleBarColorsSetter(true, null, barsColorInfo, barsColorInfo));
-            await BarsHelper.Current.SetCustomStatusBarColorsSetterAsync(new BarsHelperStatusBarColorsSetter(1.0, true, null, barsColorInfo, barsColorInfo));
+            await BarsHelper.Current.SetCustomTitleBarColorsSetterAsync(new BarsHelperTitleBarColorsSetter(true, null, defaultBarsColorInfo, defaultBarsColorInfo));
+            await BarsHelper.Current.SetCustomStatusBarColorsSetterAsync(new BarsHelperStatusBarColorsSetter(1.0, true, null, defaultBarsColorInfo, defaultBarsColorInfo));
 
             if (BarsHelper.Current.IsInitialized)
             {
@@ -61,7 +56,8 @@ namespace ProjectLifeSaver
 
                 Window.Current.Content = rootFrame;
 
-                await SetBarsColors(defaultBarsColorInfo);
+                BarsHelper.Current.RequestedThemeGetter = () => ElementTheme.Dark;
+                await SetDefaultBarsColors();
                 await BarsHelper.Current.InitializeForCurrentViewAsync();
 
                 ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(420, 520));
