@@ -62,6 +62,8 @@ namespace ProjectLifeSaver.Models
                     Message = msg
                 };
                 MainPage.Current.Log.Add(data);
+
+                await SpeechToText.TextToSpeechAsync(MainPage.Current.element, msg);
             }
 
             else
@@ -71,9 +73,9 @@ namespace ProjectLifeSaver.Models
 
                 if (!LAST_SENT.Contains("COMMAND"))
                 {
-                    txt = MainPage.Current.TB_DEBUG_INPUT.Text;
+                    txt = await SpeechToText.RecordSpeechFromMicrophoneAsync(); //MainPage.Current.TB_DEBUG_INPUT.Text;
                     LAST_SENT = txt;
-
+                    
                     MessageData data = new MessageData()
                     {
                         Sender = MessageData.ME_MESSAGE,
@@ -112,6 +114,8 @@ namespace ProjectLifeSaver.Models
                         };
 
                         MainPage.Current.Log.Add(data);
+
+                        await SpeechToText.TextToSpeechAsync(MainPage.Current.element, parts[2]);
 
                         if(parts[1] == "getData")
                         {

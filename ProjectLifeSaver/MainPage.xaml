@@ -54,6 +54,8 @@
                 <TextBox x:Name="TB_DEBUG_INPUT"
                          x:FieldModifier="public"
                          VerticalAlignment="Bottom"/>
+                <MediaElement x:Name="element"
+                              x:FieldModifier="public"/>
             </Grid>
             
         </ScrollViewer>

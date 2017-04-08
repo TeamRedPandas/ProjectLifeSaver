@@ -108,6 +108,7 @@
     <Compile Include="Models\MessageData.cs" />
     <Compile Include="Models\MessageDataTemplateSelector.cs" />
     <Compile Include="Models\ProfileData.cs" />
+    <Compile Include="Models\SpeechToText.cs" />
     <Compile Include="Pages\PhoneBook.xaml.cs">
       <DependentUpon>PhoneBook.xaml</DependentUpon>
     </Compile>
