@@ -1,0 +1,58 @@
+﻿<local:PageBase x:Class="ProjectLifeSaver.Pages.Home"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:local="using:ProjectLifeSaver.Pages"
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                mc:Ignorable="d"
+                >
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.2*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.2*"/>
+        </Grid.ColumnDefinitions>
+        
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Grid.Row="1"
+                    Grid.ColumnSpan="3"
+                    >
+            <TextBlock HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="48"
+                       >
+                176 BPM
+            </TextBlock>
+
+            <Image Source="ms-appx:///Assets/HeartBeat.gif"
+                   Stretch="None"
+                   />
+        </StackPanel>
+
+        <Viewbox HorizontalAlignment="Stretch"
+                 VerticalAlignment="Stretch"
+                 Grid.Row="3"
+                 Grid.Column="1"
+                 >
+            <Button x:Name="Bt_Help"
+                    Content="HELP"
+                    FontWeight="SemiBold"
+                    FontSize="12"
+                    Foreground="White"
+                    Background="{StaticResource LightAccentBrush}"
+                    Width="48"
+                    Height="48"
+                    Style="{StaticResource EllipseButton}"
+                    Click="Bt_Help_Click"
+                    />
+        </Viewbox>
+    </Grid>
+</local:PageBase>
