@@ -110,14 +110,14 @@
 
             <ui:AdvancedTextBox x:Name="TB_Message"
                                 x:FieldModifier="public"
-                                PlaceholderText="How may we help you?"
+                                PlaceholderText="May I help you?"
                                 FontSize="24"
                                 Height="48"
                                 Grid.Row="2"
                                 SubmitKeyDown="SendMessage"
                                 />
 
-            <Button Content="&#xE724;"
+            <Button Content="&#xE720;"
                     FontFamily="Segoe MDL2 Assets"
                     FontSize="24"
                     Width="48"

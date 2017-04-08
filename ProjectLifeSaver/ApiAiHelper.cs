@@ -98,7 +98,9 @@ namespace ProjectLifeSaver
 
                     if (parts[0] == MSG_GETDATA)
                     {
-                        RemoteDataGetter.GetInfoFromRemoteDevice();
+                        //RemoteDataGetter.GetInfoFromRemoteDevice();
+                        // DEMO:
+                        MainPage.Current.PulseDangerZone = new SolidColorBrush(Colors.MistyRose);
 
                         if (MainPage.Current.PulseDangerZone != new SolidColorBrush(Colors.White))
                         {

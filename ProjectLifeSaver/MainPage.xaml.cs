@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using UWPHelper.UI;
 using Windows.UI;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
@@ -60,6 +61,7 @@ namespace ProjectLifeSaver
         {
             Current     = this;
             AiMessages  = new ObservableCollection<MessageData>();
+            SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
 
             InitializeComponent();
         }
@@ -109,11 +111,24 @@ namespace ProjectLifeSaver
             {
                 await BarsHelper.Current.SetTitleBarColorModeAsync(BarsHelperColorMode.ThemedGray);
                 await BarsHelper.Current.SetStatusBarColorModeAsync(BarsHelperColorMode.ThemedGray);
+
+                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
             }
             else
             {
+                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
                 await App.Current.SetDefaultBarsColors();
             }
+        }
+        
+        private void OnBackRequested(object sender, BackRequestedEventArgs e)
+        {
+            if (AIOverlayVisibility == Visibility.Visible)
+            {
+                e.Handled = true;
+                AIOverlayVisibility = Visibility.Collapsed;
+            }
+
         }
     }
 }
