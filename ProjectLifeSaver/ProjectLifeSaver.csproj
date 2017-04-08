@@ -18,7 +18,7 @@
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
     <PackageCertificateKeyFile>ProjectLifeSaver_TemporaryKey.pfx</PackageCertificateKeyFile>
-    <PackageCertificateThumbprint>ABD9E52E366C41F96A16BCD40FF6501619112DE9</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>2B263F613C0CD61FA55B7793B49D7FDA7C337F94</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -100,6 +100,7 @@
     <Compile Include="ApiAiHelper.cs" />
     <Compile Include="BloodTypeToStringConverter.cs" />
     <Compile Include="Models\BloodType.cs" />
+    <Compile Include="Models\Dial.cs" />
     <Compile Include="Models\Disease.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -107,6 +108,7 @@
     <Compile Include="Models\MessageData.cs" />
     <Compile Include="MessageDataTemplateSelector.cs" />
     <Compile Include="Models\ProfileData.cs" />
+    <Compile Include="Models\SpeechToText.cs" />
     <Compile Include="Pages\PhoneBook.xaml.cs">
       <DependentUpon>PhoneBook.xaml</DependentUpon>
     </Compile>
