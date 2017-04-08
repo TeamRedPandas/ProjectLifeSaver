@@ -21,7 +21,7 @@ namespace ProjectLifeSaver.Models
                 },
                 new Disease
                 {
-                    Name        = "Necromancy",
+                    Name        = "Allergy to necromancy",
                     Description = "Supposed practice of magic involving communication with the deceased for the purpose of divination, imparting the means to foretell future events or discover hidden knowledge, to bring someone back from the dead, or to use the deceased as a weapon, as the term may sometimes be used in a more general sense to refer to black magic or witchcraft."
                 }
             }

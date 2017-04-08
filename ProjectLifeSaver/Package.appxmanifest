@@ -33,11 +33,16 @@
     </Application>
   </Applications>
   <Capabilities>
+    <Capability Name="internetClientServer" />
     <Capability Name="internetClient" />
+    <Capability Name="privateNetworkClientServer" />
     <uap:Capability Name="phoneCall" />
     <uap:Capability Name="contacts" />
     <uap:Capability Name="chat" />
+    <uap3:Capability Name="remoteSystem" />
+    <uap3:Capability Name="userNotificationListener" />
     <DeviceCapability Name="location" />
     <DeviceCapability Name="microphone" />
+    <DeviceCapability Name="pointOfService" />
   </Capabilities>
 </Package>

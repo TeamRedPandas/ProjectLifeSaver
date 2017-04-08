@@ -6,8 +6,8 @@ namespace ProjectLifeSaver.Models
 {
     public static class Dial
     {
-        public static string DEBUG = "";    /*INSERT NUMBER*/
-        
+        public static string DEBUG = "+420604540531";    /*INSERT NUMBER*/
+      
         public static async Task CallAsync()
         {
             PhoneCallStore PhoneCallStore = await PhoneCallManager.RequestStoreAsync();

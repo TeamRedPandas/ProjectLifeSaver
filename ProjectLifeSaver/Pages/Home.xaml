@@ -28,8 +28,9 @@
             <TextBlock HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        FontSize="48"
+                       Foreground="{x:Bind Current.PulseDangerZone, Mode=OneWay}"
                        >
-                147 BPM
+                <Run Text="{x:Bind Current.PulseConverted, Mode=OneWay}"/> BPM
             </TextBlock>
 
             <Image Source="ms-appx:///Assets/HeartBeat.gif"

@@ -4,6 +4,8 @@ namespace ProjectLifeSaver.Pages
 {
     public sealed partial class Home : PageBase
     {
+        public MainPage Current { get { return MainPage.Current; } }
+
         public Home()
         {
             Name = "Home";
