@@ -4,14 +4,42 @@ using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using UWPHelper.UI;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
 
 namespace ProjectLifeSaver
 {
     public sealed partial class MainPage : Page
     {
         public static readonly DependencyProperty AIOverlayVisibilityProperty = DependencyProperty.Register(nameof(AIOverlayVisibility), typeof(Visibility), typeof(MainPage), new PropertyMetadata(Visibility.Collapsed, OnAIOverlayVisibilityPropertyChanged));
+        public static readonly DependencyProperty PulseProperty = DependencyProperty.Register(nameof(Pulse), typeof(float), typeof(MainPage), new PropertyMetadata(0f));
+        public static readonly DependencyProperty PulseConvertedProperty = DependencyProperty.Register(nameof(PulseConverted), typeof(int), typeof(MainPage), new PropertyMetadata(120));
+        public static readonly DependencyProperty TemperatureProperty = DependencyProperty.Register(nameof(Temperature), typeof(float), typeof(MainPage), new PropertyMetadata(34f));
+        public static readonly DependencyProperty PulseColorProperty = DependencyProperty.Register(nameof(PulseDangerZone), typeof(SolidColorBrush), typeof(MainPage), new PropertyMetadata(new SolidColorBrush(Colors.Black)));
+
+        public float Pulse
+        {
+            get { return (float)GetValue(PulseProperty); }
+            set { SetValue(PulseProperty, value); }
+        }
+        public int PulseConverted
+        {
+            get { return (int)GetValue(PulseConvertedProperty); }
+            set { SetValue(PulseConvertedProperty, (int)value); }
+        }
+        public float Temperature
+        {
+            get { return (float)GetValue(TemperatureProperty); }
+            set { SetValue(TemperatureProperty, value); }
+        }
+
+        public SolidColorBrush PulseDangerZone
+        {
+            get { return (SolidColorBrush)GetValue(PulseColorProperty); }
+            set { SetValue(PulseColorProperty, value); }
+        }
 
         public static MainPage Current { get; private set; }
 
@@ -39,7 +67,7 @@ namespace ProjectLifeSaver
             AIOverlayVisibility = Visibility.Visible;
             TB_Message.Focus(FocusState.Programmatic);
 
-            return apiAiHelper.GetResponse();
+            return apiAiHelper.InitResponse();
         }
         
         private async void SendMessage(object sender, object e)
