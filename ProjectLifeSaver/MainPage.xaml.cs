@@ -1,7 +1,12 @@
-﻿using ProjectLifeSaver.Pages;
+﻿using Microsoft.Graphics.Canvas.Effects;
+using ProjectLifeSaver.Models;
+using ProjectLifeSaver.Pages;
 using System;
+using System.Collections.ObjectModel;
+using Windows.UI.Composition;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Hosting;
 
 namespace ProjectLifeSaver
 {
@@ -9,6 +14,8 @@ namespace ProjectLifeSaver
     {
         public static MainPage Current { get; private set; }
 
+        public ObservableCollection<MessageData> Log;
+        public ApiAiHelper Requester;
         //public List
 
         public Visibility AiLogVisibility
@@ -26,6 +33,11 @@ namespace ProjectLifeSaver
         {
             Current = this;
             InitializeComponent();
+
+            Log = new ObservableCollection<MessageData>();
+            LV_ApiAiLog.ItemsSource = Log;
+
+            Requester = new ApiAiHelper();
         }
 
         private void APi_Main_Loaded(object sender, RoutedEventArgs e)
@@ -47,6 +59,11 @@ namespace ProjectLifeSaver
                     pivotItem.Header = pivotItem.Name.Remove(0, 4).ToUpper();
                 }
             }
+        }
+
+        private async void Test(object sender, RoutedEventArgs e)
+        {
+            await Requester.GetResponse();
         }
     }
 }

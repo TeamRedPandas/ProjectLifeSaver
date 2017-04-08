@@ -7,5 +7,11 @@
             Name = "Home";
             InitializeComponent();
         }
+
+        private async void Bt_Help_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            MainPage.Current.AiLogVisibility = Windows.UI.Xaml.Visibility.Visible;
+            await MainPage.Current.Requester.GetResponse();
+        }
     }
 }
