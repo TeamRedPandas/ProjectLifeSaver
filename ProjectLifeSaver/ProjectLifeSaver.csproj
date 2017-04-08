@@ -97,14 +97,18 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\Blood.cs" />
+    <Compile Include="ApiAiHelper.cs" />
+    <Compile Include="BloodTypeToStringConverter.cs" />
+    <Compile Include="Models\BloodType.cs" />
     <Compile Include="Models\Disease.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\Profile.cs" />
-    <Compile Include="Pages\Dial.xaml.cs">
-      <DependentUpon>Dial.xaml</DependentUpon>
+    <Compile Include="Models\MessageData.cs" />
+    <Compile Include="MessageDataTemplateSelector.cs" />
+    <Compile Include="Models\ProfileData.cs" />
+    <Compile Include="Pages\PhoneBook.xaml.cs">
+      <DependentUpon>PhoneBook.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
@@ -167,8 +171,8 @@
     <Content Include="Assets\Icons\Wide310x150Logo.scale-150.png" />
     <Content Include="Assets\Icons\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Icons\Wide310x150Logo.scale-400.png" />
-    <Content Include="DebugAssets\04 150p-01.jpg" />
-    <Content Include="DebugAssets\HeartBeat.gif" />
+    <Content Include="Assets\profile.jpg" />
+    <Content Include="Assets\HeartBeat.gif" />
     <Content Include="Properties\Default.rd.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -180,7 +184,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\Dial.xaml">
+    <Page Include="Pages\PhoneBook.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

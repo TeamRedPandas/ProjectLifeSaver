@@ -1,20 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using NotifyPropertyChangedBase;
 
 namespace ProjectLifeSaver.Models
 {
-    public sealed class Disease
+    public sealed class Disease : NotifyPropertyChanged
     {
-        public string Name { get; set; }
-        public string Desctiption { get; set; }
-
-        public Disease(string Name, string Description)
+        public string Name
         {
-            this.Name = Name;
-            this.Desctiption = Desctiption;
+            get { return (string)GetValue(); }
+            set { SetValue(value); }
+        }
+        public string Description
+        {
+            get { return (string)GetValue(); }
+            set { SetValue(value); }
+        }
+
+        public Disease()
+        {
+            RegisterProperty(nameof(Name), typeof(string), null);
+            RegisterProperty(nameof(Description), typeof(string), null);
         }
     }
 }

@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Threading.Tasks;
 using UWPHelper.UI;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.Foundation;
 using Windows.UI;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -11,14 +14,37 @@ namespace ProjectLifeSaver
 {
     public sealed partial class App : Application
     {
+        public static new App Current { get; private set; }
+
+        private BarsHelperColorsSetterColorInfo defaultBarsColorInfo;
+
         public App()
         {
+            Current = this;
+
             InitializeComponent();
             Suspending += OnSuspending;
         }
 
+        public Task SetDefaultBarsColors()
+        {
+            return SetBarsColors(defaultBarsColorInfo);
+        }
+
+        public async Task SetBarsColors(BarsHelperColorsSetterColorInfo barsColorInfo)
+        {
+            await BarsHelper.Current.SetCustomTitleBarColorsSetterAsync(new BarsHelperTitleBarColorsSetter(true, null, barsColorInfo, barsColorInfo));
+            await BarsHelper.Current.SetCustomStatusBarColorsSetterAsync(new BarsHelperStatusBarColorsSetter(1.0, true, null, barsColorInfo, barsColorInfo));
+
+            if (BarsHelper.Current.IsInitialized)
+            {
+                await BarsHelper.Current.SetBarsColorsAsync();
+            }
+        }
+
         protected override async void OnActivated(IActivatedEventArgs args)
         {
+            defaultBarsColorInfo = new BarsHelperColorsSetterColorInfo((Color)Resources["SystemAccentColor"], Colors.White);
             // Start loading lightweight data here
 
             Frame rootFrame = Window.Current.Content as Frame;
@@ -35,10 +61,10 @@ namespace ProjectLifeSaver
 
                 Window.Current.Content = rootFrame;
 
-                BarsHelperColorsSetterColorInfo barsColorInfo = new BarsHelperColorsSetterColorInfo((Color)Resources["LifeSaverAccentColor"], Colors.White);
-                await BarsHelper.Current.SetCustomTitleBarColorsSetterAsync(new BarsHelperTitleBarColorsSetter(true, null, barsColorInfo, barsColorInfo));
-                await BarsHelper.Current.SetCustomStatusBarColorsSetterAsync(new BarsHelperStatusBarColorsSetter(1.0, true, null, barsColorInfo, barsColorInfo));
+                await SetBarsColors(defaultBarsColorInfo);
                 await BarsHelper.Current.InitializeForCurrentViewAsync();
+
+                ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(420, 520));
             }
             
             LaunchActivatedEventArgs launchArgs = args as LaunchActivatedEventArgs;
