@@ -11,10 +11,10 @@ namespace ProjectLifeSaver.Models
         protected override DataTemplate SelectTemplateCore(object item,
                                                        DependencyObject container)
         {
-            if (((MessageData)item).Sender == "assistant")
+            if (((MessageData)item).Sender == MessageData.ASSISTANT_MESSAGE)
                 return Assistant;
 
-            if (((MessageData)item).Sender == "me")
+            if (((MessageData)item).Sender == MessageData.ME_MESSAGE)
                 return Me;
 
             return base.SelectTemplateCore(item, container);

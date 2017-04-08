@@ -5,6 +5,9 @@ namespace ProjectLifeSaver.Models
 {
     public sealed class MessageData : NotifyPropertyChanged
     {
+        public static string ME_MESSAGE = "Me";
+        public static string ASSISTANT_MESSAGE = "Assistant";
+
         public string Message
         {
             get { return (string)GetValue(); }
