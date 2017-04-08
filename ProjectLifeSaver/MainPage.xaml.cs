@@ -7,6 +7,7 @@ using UWPHelper.UI;
 using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
 
 namespace ProjectLifeSaver
 {
@@ -38,8 +39,8 @@ namespace ProjectLifeSaver
             AIOverlayVisibility = Visibility.Visible;
             return apiAiHelper.GetResponse();
         }
-
-        private async void SendMessage(object sender, RoutedEventArgs e)
+        
+        private async void SendMessage(object sender, object e)
         {
             await apiAiHelper.GetResponse();
         }
@@ -69,7 +70,7 @@ namespace ProjectLifeSaver
         {
             if ((Visibility)e.NewValue == Visibility.Visible)
             {
-                BarsHelperColorsSetterColorInfo barsColorInfo = new BarsHelperColorsSetterColorInfo((Color)App.Current.Resources["AiAccentColor"], Colors.White);
+                BarsHelperColorsSetterColorInfo barsColorInfo = new BarsHelperColorsSetterColorInfo(Colors.Black, Colors.White);
                 await App.Current.SetBarsColors(barsColorInfo);
             }
             else

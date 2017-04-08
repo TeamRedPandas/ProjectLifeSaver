@@ -12,11 +12,11 @@ namespace ProjectLifeSaver
 
         protected override DataTemplate SelectTemplateCore(object item, DependencyObject container)
         {
-            if (((MessageData)item).Sender == MessageData.ASSISTANT_MESSAGE)
+            if (((MessageData)item).Sender == MessageData.SENDER_ASSISTANT)
             {
                 return Assistant;
             }
-            else if (((MessageData)item).Sender == MessageData.ME_MESSAGE)
+            else if (((MessageData)item).Sender == MessageData.SENDER_ME)
             {
                 return Me;
             }

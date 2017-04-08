@@ -54,7 +54,7 @@ namespace ProjectLifeSaver
                 var msg = await TryGetMessageAsync(MSG_INIT);
                 MessageData data = new MessageData()
                 {
-                    Sender = MessageData.ASSISTANT_MESSAGE,
+                    Sender = MessageData.SENDER_ASSISTANT,
                     Received = DateTime.Now,
                     Message = msg
                 };
@@ -69,12 +69,12 @@ namespace ProjectLifeSaver
 
                 if (!lastSent.Contains("COMMAND"))
                 {
-                    txt = MainPage.Current.TB_DEBUG_INPUT.Text;
+                    txt = MainPage.Current.TB_Message.Text;
                     lastSent = txt;
 
                     MessageData data = new MessageData()
                     {
-                        Sender = MessageData.ME_MESSAGE,
+                        Sender = MessageData.SENDER_ME,
                         Received = DateTime.Now,
                         Message = txt
                     };
@@ -104,7 +104,7 @@ namespace ProjectLifeSaver
 
                         MessageData data = new MessageData()
                         {
-                            Sender = MessageData.ASSISTANT_MESSAGE,
+                            Sender = MessageData.SENDER_ASSISTANT,
                             Received = DateTime.Now,
                             Message = parts[2]
                         };
@@ -125,7 +125,7 @@ namespace ProjectLifeSaver
 
                         MessageData data = new MessageData()
                         {
-                            Sender = MessageData.ASSISTANT_MESSAGE,
+                            Sender = MessageData.SENDER_ASSISTANT,
                             Received = DateTime.Now,
                             Message = result
                         };

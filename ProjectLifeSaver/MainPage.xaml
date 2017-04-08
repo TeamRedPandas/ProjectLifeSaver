@@ -8,22 +8,6 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       mc:Ignorable="d"
       >
-    <Page.Resources>
-        <DataTemplate x:Key="DT_Assistant" x:DataType="models:MessageData">
-            <StackPanel HorizontalAlignment="Left">
-                <TextBlock Text="{x:Bind Sender, Mode=OneWay}"/>
-                <TextBlock Text="{x:Bind Message, Mode=OneWay}"/>
-            </StackPanel>
-        </DataTemplate>
-
-        <DataTemplate x:Key="DT_Me" x:DataType="models:MessageData">
-            <StackPanel HorizontalAlignment="Right">
-                <TextBlock Text="{x:Bind Sender, Mode=OneWay}"/>
-                <TextBlock Text="{x:Bind Message, Mode=OneWay}"/>
-            </StackPanel>
-        </DataTemplate>
-    </Page.Resources>
-    
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ui:AdvancedPivot x:Name="APi_Main"
                           HeaderBackground="{ThemeResource SystemControlBackgroundAccentBrush}"
@@ -36,34 +20,104 @@
             <PivotItem x:Name="PiI_Profile"/>
         </ui:AdvancedPivot>
 
-        <Grid Background="{StaticResource AiAccentBrush}"
+        <Grid Background="{ThemeResource SystemControlBackgroundAltHighBrush}"
               Visibility="{x:Bind AIOverlayVisibility, Mode=OneWay}"
-              RequestedTheme="{StaticResource AiAccentTheme}"
+              RequestedTheme="Dark"
               >
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
 
             <ListView ItemsSource="{x:Bind AiMessages}"
                       SelectionMode="None"
-                      Grid.Row="0"
+                      Grid.ColumnSpan="2"
                       >
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
                 <ListView.ItemTemplateSelector>
-                    <local:MessageDataTemplateSelector Me="{StaticResource DT_Me}"
-                                                       Assistant="{StaticResource DT_Assistant}"
-                                                       />
+                    <local:MessageDataTemplateSelector>
+                        <local:MessageDataTemplateSelector.Me>
+                            <DataTemplate x:DataType="models:MessageData">
+                                <StackPanel HorizontalAlignment="Right"
+                                            RequestedTheme="Dark"
+                                            >
+                                    <Polygon Points="15,0 15,15 0,15"
+                                             Fill="{StaticResource LightAccentBrush}"
+                                             HorizontalAlignment="Right"
+                                             Margin="0,0,5,0"
+                                             />
+
+                                    <StackPanel Background="{StaticResource LightAccentBrush}"
+                                                CornerRadius="3"
+                                                Padding="6"
+                                                >
+                                        <TextBlock Text="{x:Bind Message, Mode=OneWay}"
+                                                   TextWrapping="WrapWholeWords"
+                                                   />
+                                        <TextBlock Text="{x:Bind Received, Mode=OneWay}"
+                                                   HorizontalAlignment="Left"
+                                                   Style="{StaticResource DescriptionTextBlock}"
+                                                   />
+                                    </StackPanel>
+                                </StackPanel>
+                            </DataTemplate>
+                        </local:MessageDataTemplateSelector.Me>
+                        <local:MessageDataTemplateSelector.Assistant>
+                            <DataTemplate x:DataType="models:MessageData">
+                                <StackPanel HorizontalAlignment="Left"
+                                            Padding="6"
+                                            RequestedTheme="Light"
+                                            >
+                                    <Polygon Points="0,0 15,15 0,15"
+                                             Fill="LightGray"
+                                             Margin="5,0,0,0"
+                                             />
+
+                                    <StackPanel Background="LightGray"
+                                                CornerRadius="3"
+                                                Padding="6"
+                                                >
+                                        <TextBlock Text="{x:Bind Message, Mode=OneWay}"
+                                                   TextWrapping="WrapWholeWords"
+                                                   />
+                                        <TextBlock Text="{x:Bind Received, Mode=OneWay}"
+                                                   HorizontalAlignment="Right"
+                                                   Style="{StaticResource DescriptionTextBlock}"
+                                                   />
+                                    </StackPanel>
+                                </StackPanel>
+                            </DataTemplate>
+                        </local:MessageDataTemplateSelector.Assistant>
+                    </local:MessageDataTemplateSelector>
                 </ListView.ItemTemplateSelector>
             </ListView>
-            
-            <Button Content="Send"
+
+            <ui:AdvancedTextBox x:Name="TB_Message"
+                                x:FieldModifier="public"
+                                PlaceholderText="How may we help you?"
+                                FontSize="24"
+                                Height="48"
+                                Grid.Row="1"
+                                SubmitKeyDown="SendMessage"
+                                />
+
+            <Button Content="&#xE724;"
+                    FontFamily="Segoe MDL2 Assets"
+                    FontSize="24"
+                    Width="48"
+                    Height="48"
+                    Grid.Row="1"
+                    Grid.Column="1"
                     Click="SendMessage"
                     />
-
-            <TextBox x:Name="TB_DEBUG_INPUT"
-                     x:FieldModifier="public"
-                     Grid.Row="1"
-                     />
         </Grid>
     </Grid>
 </Page>
