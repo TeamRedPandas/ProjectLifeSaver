@@ -9,47 +9,51 @@ namespace ProjectLifeSaver.APITester
     {
         private const string RECEIVING_STOP_MESSAGE = "678999dd-f661-4f5f-afa3-e0c4a9f7fe16_d9ddf6f2-e57f-4a5d-87ef-30fb8345e499";
 
-        private static IPAddress remoteIP;
-        private static int localPort;
+        //private static IPAddress remoteIP;
+        private static int localPort = 15258;
 
         public static void Main(string[] args)
         {
-            do
-            {
-                Console.Write("Enter remote IP address to listen for: ");
-            } while (!IPAddress.TryParse(Console.ReadLine(), out remoteIP));
+            Console.Title = "ProjectLifeSaver.APITester";
 
-            do
-            {
-                Console.Write("Enter local port to listen on: ");
-            } while (!int.TryParse(Console.ReadLine(), out localPort));
+            // do
+            // {
+            //     Console.Write("Enter remote IP address to listen for: ");
+            // } while (!IPAddress.TryParse(Console.ReadLine(), out remoteIP));
 
-            using (Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp))
+            // do
+            // {
+            //     Console.Write("Enter local port to listen on: ");
+            // } while (!int.TryParse(Console.ReadLine(), out localPort));
+
+            try
             {
-                try
+                using (Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp))
                 {
-                    EndPoint remoteEndPoint = new IPEndPoint(remoteIP, localPort);
-                    socket.Bind(remoteEndPoint);
+                    socket.Bind(new IPEndPoint(IPAddress.Any, localPort));
+                    socket.Listen(1);
 
-                    byte[] data = new byte[8];
+                    Socket connection = socket.Accept();
 
                     while (true)
                     {
-                        int received = socket.ReceiveFrom(data, ref remoteEndPoint);
+                        byte[] data             = new byte[800];
+                        int receivedDataLength  = connection.Receive(data);
+                        string receivedString   = Encoding.UTF8.GetString(data, 0, receivedDataLength);
 
-                        if (Encoding.Unicode.GetString(data, 0, received) == RECEIVING_STOP_MESSAGE)
+                        if (receivedString == RECEIVING_STOP_MESSAGE)
                         {
                             Console.WriteLine("Closing the connection . . .");
                             break;
                         }
 
-                        Console.WriteLine(Encoding.Unicode.GetString(data, 0, received));
+                        Console.WriteLine(receivedString);
                     }
                 }
-                catch (Exception exception)
-                {
-                    Console.WriteLine("\nSomething happened:\n" + exception);
-                }
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine("\nSomething happened ( ͡° ͜ʖ ͡°)\n" + exception);
             }
 
             Console.ReadLine();
