@@ -60,6 +60,8 @@ namespace ProjectLifeSaver
                 };
 
                 MainPage.Current.AiMessages.Add(data);
+
+                await SpeechToText.TextToSpeechAsync(MainPage.Current.element, msg);
             }
 
             else
@@ -69,9 +71,9 @@ namespace ProjectLifeSaver
 
                 if (!lastSent.Contains("COMMAND"))
                 {
-                    txt = MainPage.Current.TB_Message.Text;
+                    txt = await SpeechToText.RecordSpeechFromMicrophoneAsync(); //MainPage.Current.TB_DEBUG_INPUT.Text;
                     lastSent = txt;
-
+                    
                     MessageData data = new MessageData()
                     {
                         Sender = MessageData.SENDER_ME,
@@ -83,22 +85,22 @@ namespace ProjectLifeSaver
 
                     result = await TryGetMessageAsync(txt);
                 }
-                
+
                 while (true)
                 {
                     if (result.Contains("COMMAND"))
                     {
                         string[] parts = result.Split('-');
 
-                        if(parts[1] == MSG_CANCELDIAL)
+                        if (parts[1] == MSG_CANCELDIAL)
                         {
                             /*RESET TO DEFAULT*/
                             return;
                         }
 
-                        if(parts[1] == MSG_DIALAMBULANCE)
+                        if (parts[1] == MSG_DIALAMBULANCE)
                         {
-                            /*DIAL AMBULANCE*/
+                            await Dial.CallAsync();
                             return;
                         }
 
@@ -111,7 +113,9 @@ namespace ProjectLifeSaver
 
                         MainPage.Current.AiMessages.Add(data);
 
-                        if(parts[1] == "getData")
+                        await SpeechToText.TextToSpeechAsync(MainPage.Current.element, parts[2]);
+
+                        if (parts[1] == "getData")
                         {
                             /*TRY TO EVALUATE DATA*/
 
@@ -131,6 +135,7 @@ namespace ProjectLifeSaver
                         };
 
                         MainPage.Current.AiMessages.Add(data);
+                        await SpeechToText.TextToSpeechAsync(MainPage.Current.element, result);
 
                         return;
                     }

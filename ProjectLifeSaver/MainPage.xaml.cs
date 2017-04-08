@@ -4,7 +4,6 @@ using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using UWPHelper.UI;
-using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -17,6 +16,8 @@ namespace ProjectLifeSaver
         public static MainPage Current { get; private set; }
 
         private readonly ApiAiHelper apiAiHelper = new ApiAiHelper();
+
+        public readonly MediaElement element = new MediaElement { AutoPlay = false };
         
         public ObservableCollection<MessageData> AiMessages { get; }
         private Visibility AIOverlayVisibility
@@ -68,8 +69,8 @@ namespace ProjectLifeSaver
         {
             if ((Visibility)e.NewValue == Visibility.Visible)
             {
-                BarsHelperColorsSetterColorInfo barsColorInfo = new BarsHelperColorsSetterColorInfo(Colors.Black, Colors.White);
-                await App.Current.SetBarsColors(barsColorInfo);
+                await BarsHelper.Current.SetTitleBarColorModeAsync(BarsHelperColorMode.ThemedGray);
+                await BarsHelper.Current.SetStatusBarColorModeAsync(BarsHelperColorMode.ThemedGray);
             }
             else
             {
