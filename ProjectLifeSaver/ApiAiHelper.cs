@@ -59,7 +59,10 @@ namespace ProjectLifeSaver
             MainPage.Current.AiMessages.Add(data);
 
             if (Sender == MessageData.SENDER_ASSISTANT)
+            {
                 await SpeechToText.TextToSpeechAsync(MainPage.Current.Element, Message);
+                await Task.Delay(2500);
+            }
         }
 
         public async Task InitResponse()
