@@ -1,36 +1,33 @@
 ﻿using ApiAiSDK;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Windows.UI.Xaml;
 
 namespace ProjectLifeSaver.Models
 {
     public class ApiAiHelper
     {
-        private string ApiAiToken = "d495e29a70a8476dafc7681fd740e594";
-        private ApiAi apiAi;
+        private const string API_AI_TOKEN           = "d495e29a70a8476dafc7681fd740e594";
 
-        private const string MSG_INIT = "initial_message";
-        private const string MSG_CALLAMBULANCE = "call_ambulance_request";
+        private const string MSG_INIT               = "initial_message";
+        private const string MSG_CALLAMBULANCE      = "call_ambulance_request";
         private const string MSG_CHECKINPUTBYPERSON = "check_input_by_person";
-        private const string MSG_HYPERTENSION = "hypertension";
-        private const string MSG_HYPOTENSION = "hypotension";
-        private const string MSG_LOWTEMPERATURE = "low_temperature";
-        private const string MSG_HIGHTEMPERATURE = "high_temperature";
-        private const string MSG_NONE = "none";
-        private const string MSG_GETDATA = "getData";
+        private const string MSG_HYPERTENSION       = "hypertension";
+        private const string MSG_HYPOTENSION        = "hypotension";
+        private const string MSG_LOWTEMPERATURE     = "low_temperature";
+        private const string MSG_HIGHTEMPERATURE    = "high_temperature";
+        private const string MSG_NONE               = "none";
+        private const string MSG_GETDATA            = "getData";
 
-        private const string MSG_DIALAMBULANCE = "dial_ambulance";
-        private const string MSG_CANCELDIAL = "cancel_ambulance";
+        private const string MSG_DIALAMBULANCE      = "dial_ambulance";
+        private const string MSG_CANCELDIAL         = "cancel_ambulance";
 
-        private string LAST_SENT = "";
-        private bool INIT_DONE = false;
+        private bool isInitialized;
+        private string lastSent;
+        private ApiAi apiAi;
 
         public ApiAiHelper()
         {
-            var config = new AIConfiguration(ApiAiToken, SupportedLanguage.English);
+            AIConfiguration config = new AIConfiguration(API_AI_TOKEN, SupportedLanguage.English);
             apiAi = new ApiAi(config);
         }
 
@@ -49,10 +46,10 @@ namespace ProjectLifeSaver.Models
 
         public async Task GetResponse()
         {
-            if (!INIT_DONE)
+            if (!isInitialized)
             {
-                LAST_SENT = MSG_INIT;
-                INIT_DONE = true;
+                lastSent = MSG_INIT;
+                isInitialized = true;
                 var msg = await TryGetMessageAsync(MSG_INIT);
                 MessageData data = new MessageData()
                 {
@@ -60,7 +57,8 @@ namespace ProjectLifeSaver.Models
                     Received = DateTime.Now,
                     Message = msg
                 };
-                MainPage.Current.Log.Add(data);
+
+                MainPage.Current.AiMessages.Add(data);
             }
 
             else
@@ -68,10 +66,10 @@ namespace ProjectLifeSaver.Models
                 string txt = "";
                 string result = "";
 
-                if (!LAST_SENT.Contains("COMMAND"))
+                if (!lastSent.Contains("COMMAND"))
                 {
                     txt = MainPage.Current.TB_DEBUG_INPUT.Text;
-                    LAST_SENT = txt;
+                    lastSent = txt;
 
                     MessageData data = new MessageData()
                     {
@@ -80,12 +78,12 @@ namespace ProjectLifeSaver.Models
                         Message = txt
                     };
 
-                    MainPage.Current.Log.Add(data);
+                    MainPage.Current.AiMessages.Add(data);
 
                     result = await TryGetMessageAsync(txt);
                 }
                 
-                do
+                while (true)
                 {
                     if (result.Contains("COMMAND"))
                     {
@@ -110,7 +108,7 @@ namespace ProjectLifeSaver.Models
                             Message = parts[2]
                         };
 
-                        MainPage.Current.Log.Add(data);
+                        MainPage.Current.AiMessages.Add(data);
 
                         if(parts[1] == "getData")
                         {
@@ -131,12 +129,11 @@ namespace ProjectLifeSaver.Models
                             Message = result
                         };
 
-                        MainPage.Current.Log.Add(data);
+                        MainPage.Current.AiMessages.Add(data);
 
                         return;
                     }
-
-                } while (true);
+                }
             }
         }
     }

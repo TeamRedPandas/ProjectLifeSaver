@@ -50,7 +50,8 @@
                     Background="#FFC00000"
                     Width="48"
                     Height="48"
-                    Style="{StaticResource EllipseButton}" Click="Bt_Help_Click"
+                    Style="{StaticResource EllipseButton}"
+                    Click="Bt_Help_Click"
                     />
         </Viewbox>
     </Grid>

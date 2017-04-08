@@ -1,4 +1,6 @@
-﻿namespace ProjectLifeSaver.Pages
+﻿using Windows.UI.Xaml;
+
+namespace ProjectLifeSaver.Pages
 {
     public sealed partial class Home : PageBase
     {
@@ -8,10 +10,9 @@
             InitializeComponent();
         }
 
-        private async void Bt_Help_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private async void Bt_Help_Click(object sender, RoutedEventArgs e)
         {
-            MainPage.Current.AiLogVisibility = Windows.UI.Xaml.Visibility.Visible;
-            await MainPage.Current.Requester.GetResponse();
+            await MainPage.Current.GetHelp();
         }
     }
 }

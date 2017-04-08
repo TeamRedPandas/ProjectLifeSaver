@@ -6,23 +6,22 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       mc:Ignorable="d"
-      
       >
     <Page.Resources>
         <DataTemplate x:Key="AssistantMessage" x:DataType="models:MessageData">
             <StackPanel HorizontalAlignment="Left"
-                        Margin="10,10,60,10">
+                        Margin="10,10,60,10"
+                        >
                 <TextBlock Text="{x:Bind Sender, Mode=OneWay}"/>
-                <TextBlock x:Name="TB_content"
-                           Text="{x:Bind Message, Mode=OneWay}"/>
+                <TextBlock Text="{x:Bind Message, Mode=OneWay}"/>
             </StackPanel>
         </DataTemplate>
         <DataTemplate x:Key="MeMessage" x:DataType="models:MessageData">
             <StackPanel HorizontalAlignment="Right"
-                        Margin="10,10,60,10">
+                        Margin="10,10,60,10"
+                        >
                 <TextBlock Text="{x:Bind Sender, Mode=OneWay}"/>
-                <TextBlock x:Name="TB_content"
-                           Text="{x:Bind Message, Mode=OneWay}"/>
+                <TextBlock Text="{x:Bind Message, Mode=OneWay}"/>
             </StackPanel>
         </DataTemplate>
 
@@ -31,6 +30,7 @@
                                             Assistant="{StaticResource AssistantMessage}"
                                             />
     </Page.Resources>
+    
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ui:AdvancedPivot x:Name="APi_Main"
                           HeaderBackground="{ThemeResource SystemControlBackgroundAccentBrush}"
@@ -43,19 +43,30 @@
             <PivotItem x:Name="PiI_Profile"/>
         </ui:AdvancedPivot>
 
-        <ScrollViewer x:Name="SV_ApiAiLog"
-              Background="#BFFFFFFF"
-              Visibility="{x:Bind AiLogVisibility, Mode=OneWay}">
+        <ScrollViewer Background="{StaticResource AiAccentBrush}"
+                      Visibility="{x:Bind AIOverlayVisibility, Mode=OneWay}"
+                      RequestedTheme="{StaticResource AiAccentTheme}"
+                      >
             <Grid>
-                <ListView x:Name="LV_ApiAiLog"
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                
+                <ListView ItemsSource="{x:Bind AiMessages}"
                           ItemTemplateSelector="{StaticResource MessageDataTemplateSelector}"
-                          SelectionMode="None"/>
-                <Button Click="Test">SEND</Button>
+                          SelectionMode="None"
+                          Grid.Row="0"
+                          />
+                <Button Content="Send"
+                        Click="SendMessage"
+                        />
+
                 <TextBox x:Name="TB_DEBUG_INPUT"
                          x:FieldModifier="public"
-                         VerticalAlignment="Bottom"/>
+                         Grid.Row="1"
+                         />
             </Grid>
-            
         </ScrollViewer>
     </Grid>
 </Page>
