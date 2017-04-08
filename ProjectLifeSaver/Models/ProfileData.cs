@@ -9,7 +9,7 @@ namespace ProjectLifeSaver.Models
         public static ProfileData Current { get; } = new ProfileData
         {
             Name            = "Gandalf the Grey",
-            BirthDate       = new DateTime(17, 2, 16),
+            BirthDate       = new DateTime(13, 2, 16),
             BloodType       = BloodType.O_P,
             AdditionalInfo  = "You shall not pass!!!",
             Diseases        = new ObservableCollection<Disease>

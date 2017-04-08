@@ -29,7 +29,7 @@
                        VerticalAlignment="Center"
                        FontSize="48"
                        >
-                176 BPM
+                147 BPM
             </TextBlock>
 
             <Image Source="ms-appx:///Assets/HeartBeat.gif"
@@ -47,10 +47,11 @@
                     FontWeight="SemiBold"
                     FontSize="12"
                     Foreground="White"
-                    Background="#FFC00000"
+                    Background="{StaticResource LightAccentBrush}"
                     Width="48"
                     Height="48"
-                    Style="{StaticResource EllipseButton}" Click="Bt_Help_Click"
+                    Style="{StaticResource EllipseButton}"
+                    Click="Bt_Help_Click"
                     />
         </Viewbox>
     </Grid>
