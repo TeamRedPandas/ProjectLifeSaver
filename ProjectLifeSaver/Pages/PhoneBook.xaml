@@ -1,0 +1,93 @@
+﻿<local:PageBase x:Class="ProjectLifeSaver.Pages.PhoneBook"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:local="using:ProjectLifeSaver.Pages"
+                xmlns:models="using:ProjectLifeSaver.Models"
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                mc:Ignorable="d"
+                >
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <AutoSuggestBox PlaceholderText="Search"
+                        QueryIcon="Find"
+                        Grid.Row="0"
+                        />
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto"
+                      Padding="{StaticResource ContentMargin}"
+                      Grid.Row="1"
+                      >
+            <StackPanel>
+                <StackPanel.Resources>
+                    <DataTemplate x:Key="NumberDataTemplate" x:DataType="models:Number">
+                        <Grid>
+                            <Grid.Resources>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Margin" Value="5,0,0,0"/>
+                                </Style>
+                            </Grid.Resources>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.22*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <!--
+                            <Image Source="{x:Bind Type, Converter={StaticResource NumberTypeToIconConverter}, Mode=OneWay}"/>
+                            -->
+                            
+                            <TextBlock FontWeight="SemiBold">
+                                <Run Text="{x:Bind Type, Converter={StaticResource NumberTypeToStringConverter}, Mode=OneWay}"/>:
+                            </TextBlock>
+                            <TextBlock Text="{x:Bind DialNumber, Mode=OneWay}"
+                                       Grid.Column="1"
+                                       />
+                        </Grid>
+                    </DataTemplate>
+                    
+                    <Style TargetType="ListView">
+                        <Setter Property="ItemTemplate" Value="{StaticResource NumberDataTemplate}"/>
+                        <Setter Property="SelectionMode" Value="None"/>
+                        <Setter Property="ItemContainerStyle">
+                            <Setter.Value>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                    <Setter Property="Padding" Value="10,0"/>
+                                </Style>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </StackPanel.Resources>
+                
+                <TextBlock Text="CZECH REPUBLIC (based on your current location)"
+                           FontWeight="SemiBold"
+                           />
+                <ListView ItemsSource="{x:Bind CzechRepublic}"/>
+
+                <TextBlock Text="AUSTRIA"
+                           FontWeight="SemiBold"
+                           />
+                <ListView ItemsSource="{x:Bind Austria}"/>
+
+                <TextBlock Text="GERMANY"
+                           FontWeight="SemiBold"
+                           />
+                <ListView ItemsSource="{x:Bind Germany}"/>
+
+                <TextBlock Text="POLAND"
+                           FontWeight="SemiBold"
+                           />
+                <ListView ItemsSource="{x:Bind Poland}"/>
+
+                <TextBlock Text="SLOVAKIA"
+                           FontWeight="SemiBold"
+                           />
+                <ListView ItemsSource="{x:Bind Slovakia}"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</local:PageBase>
