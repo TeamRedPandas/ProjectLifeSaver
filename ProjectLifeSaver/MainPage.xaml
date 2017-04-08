@@ -127,5 +127,7 @@
                     Click="SendMessage"
                     />
         </Grid>
+
+        <MediaElement x:Name="_element"/>
     </Grid>
 </Page>

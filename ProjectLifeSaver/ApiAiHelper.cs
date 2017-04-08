@@ -50,15 +50,16 @@ namespace ProjectLifeSaver
 
         public async Task AddNewMessage(string Sender, string Message)
         {
-            MessageData data = new MessageData();
-            data.Sender = Sender;
-            data.Message = Message;
-            data.Received = DateTime.Now;
-
+            MessageData data = new MessageData()
+            {
+                Sender = Sender,
+                Message = Message,
+                Received = DateTime.Now
+            };
             MainPage.Current.AiMessages.Add(data);
 
             if (Sender == MessageData.SENDER_ASSISTANT)
-                await SpeechToText.TextToSpeechAsync(MainPage.Current.element, Message);
+                await SpeechToText.TextToSpeechAsync(MainPage.Current.Element, Message);
         }
 
         public async Task InitResponse()
@@ -75,6 +76,8 @@ namespace ProjectLifeSaver
             try
             {
                 string txt = await SpeechToText.RecordSpeechFromMicrophoneAsync();
+                if (txt == "")
+                    return;
                 await AddNewMessage(MessageData.SENDER_ME, txt);
 
                 string response = await TryGetMessageAsync(txt);
@@ -88,11 +91,10 @@ namespace ProjectLifeSaver
                         if (parts[1] != "")
                             await AddNewMessage(MessageData.SENDER_ASSISTANT, parts[1]);
                     }
-                    catch (Exception e)
+                    catch
                     {
                         Debug.WriteLine("Only has COMMAND");
                     }
-
 
                     if (parts[0] == MSG_GETDATA)
                     {
@@ -120,7 +122,7 @@ namespace ProjectLifeSaver
                         {
                             await Dial.CallAsync();
                         }
-                        catch (Exception e)
+                        catch
                         { }
                         return;
                     }
@@ -130,7 +132,7 @@ namespace ProjectLifeSaver
 
                 await AddNewMessage(MessageData.SENDER_ASSISTANT, response);
             }
-            catch (Exception e)
+            catch
             {
                 Debug.WriteLine("I DONT HAVE TIME FOR THIS");
             }
