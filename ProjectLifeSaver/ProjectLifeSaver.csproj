@@ -107,8 +107,11 @@
     </Compile>
     <Compile Include="Models\MessageData.cs" />
     <Compile Include="MessageDataTemplateSelector.cs" />
+    <Compile Include="Models\Number.cs" />
     <Compile Include="Models\ProfileData.cs" />
     <Compile Include="Models\SpeechToText.cs" />
+    <Compile Include="NumberTypeToIconConverter.cs" />
+    <Compile Include="NumberTypeToStringConverter.cs" />
     <Compile Include="Pages\PhoneBook.xaml.cs">
       <DependentUpon>PhoneBook.xaml</DependentUpon>
     </Compile>
@@ -128,6 +131,8 @@
     <None Include="ProjectLifeSaver_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Ambulance.png" />
+    <Content Include="Assets\FireDept.png" />
     <Content Include="Assets\Icons\LargeTile.scale-100.png" />
     <Content Include="Assets\Icons\LargeTile.scale-125.png" />
     <Content Include="Assets\Icons\LargeTile.scale-150.png" />
@@ -173,8 +178,10 @@
     <Content Include="Assets\Icons\Wide310x150Logo.scale-150.png" />
     <Content Include="Assets\Icons\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Icons\Wide310x150Logo.scale-400.png" />
+    <Content Include="Assets\Police.png" />
     <Content Include="Assets\profile.jpg" />
     <Content Include="Assets\HeartBeat.gif" />
+    <Content Include="Assets\Sos.png" />
     <Content Include="Properties\Default.rd.xml" />
   </ItemGroup>
   <ItemGroup>

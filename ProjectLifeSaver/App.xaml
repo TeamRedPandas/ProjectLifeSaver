@@ -11,6 +11,8 @@
             </ResourceDictionary.MergedDictionaries>
 
             <local:BloodTypeToStringConverter x:Key="BloodTypeToStringConverter"/>
+            <local:NumberTypeToIconConverter x:Key="NumberTypeToIconConverter"/>
+            <local:NumberTypeToStringConverter x:Key="NumberTypeToStringConverter"/>
 
             <Color x:Key="SystemAccentColor">#E52D29</Color>
             <ElementTheme x:Key="AccentTheme">Dark</ElementTheme>
