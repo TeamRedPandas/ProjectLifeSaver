@@ -47,7 +47,7 @@
                     FontWeight="SemiBold"
                     FontSize="12"
                     Foreground="White"
-                    Background="#FFC00000"
+                    Background="{StaticResource LightAccentBrush}"
                     Width="48"
                     Height="48"
                     Style="{StaticResource EllipseButton}"

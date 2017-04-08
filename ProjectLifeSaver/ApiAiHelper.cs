@@ -1,8 +1,9 @@
 ﻿using ApiAiSDK;
+using ProjectLifeSaver.Models;
 using System;
 using System.Threading.Tasks;
 
-namespace ProjectLifeSaver.Models
+namespace ProjectLifeSaver
 {
     public class ApiAiHelper
     {

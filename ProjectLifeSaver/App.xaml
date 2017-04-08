@@ -15,6 +15,9 @@
             <Color x:Key="SystemAccentColor">#E52D29</Color>
             <ElementTheme x:Key="AccentTheme">Dark</ElementTheme>
 
+            <Color x:Key="LightAccentColor">#FFC00000</Color>
+            <SolidColorBrush x:Key="LightAccentBrush" Color="{StaticResource LightAccentColor}"/>
+
             <Color x:Key="AiAccentColor">DarkRed</Color>
             <ElementTheme x:Key="AiAccentTheme">Dark</ElementTheme>
             <SolidColorBrush x:Key="AiAccentBrush" Color="{StaticResource AiAccentColor}"/>
