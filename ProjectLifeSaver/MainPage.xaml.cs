@@ -1,5 +1,4 @@
-﻿using Microsoft.Graphics.Canvas.Effects;
-using ProjectLifeSaver.Models;
+﻿using ProjectLifeSaver.Models;
 using ProjectLifeSaver.Pages;
 using System;
 using System.Collections.ObjectModel;

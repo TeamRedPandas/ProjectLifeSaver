@@ -34,5 +34,8 @@
   </Applications>
   <Capabilities>
     <Capability Name="internetClient" />
+    <uap:Capability Name="phoneCall" />
+    <uap:Capability Name="contacts" />
+    <DeviceCapability Name="location" />
   </Capabilities>
 </Package>

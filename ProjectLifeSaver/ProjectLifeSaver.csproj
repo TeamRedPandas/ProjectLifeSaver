@@ -100,6 +100,7 @@
     <Compile Include="Models\ApiAiHelper.cs" />
     <Compile Include="BloodTypeToStringConverter.cs" />
     <Compile Include="Models\BloodType.cs" />
+    <Compile Include="Models\Dial.cs" />
     <Compile Include="Models\Disease.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
