@@ -29,7 +29,7 @@
                        VerticalAlignment="Center"
                        FontSize="48"
                        >
-                176 BPM
+                147 BPM
             </TextBlock>
 
             <Image Source="ms-appx:///Assets/HeartBeat.gif"

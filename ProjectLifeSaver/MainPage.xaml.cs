@@ -7,7 +7,6 @@ using UWPHelper.UI;
 using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Input;
 
 namespace ProjectLifeSaver
 {
@@ -37,32 +36,31 @@ namespace ProjectLifeSaver
         public Task GetHelp()
         {
             AIOverlayVisibility = Visibility.Visible;
+            TB_Message.Focus(FocusState.Programmatic);
+
             return apiAiHelper.GetResponse();
         }
         
         private async void SendMessage(object sender, object e)
         {
             await apiAiHelper.GetResponse();
+
+            TB_Message.Text = "";
+            TB_Message.Focus(FocusState.Programmatic);
+
+            LV_Messages.ScrollIntoView(LV_Messages.Items[LV_Messages.Items.Count - 1]);
         }
 
         private void APi_Main_Loaded(object sender, RoutedEventArgs e)
         {
             foreach (PivotItem pivotItem in APi_Main.Items)
             {
-                try
-                {
-                    Frame contentFrame = new Frame();
-                    contentFrame.Navigate(Type.GetType("ProjectLifeSaver.Pages." + pivotItem.Name.Remove(0, 4)));
-                    pivotItem.Content = contentFrame;
+                Frame contentFrame = new Frame();
+                contentFrame.Navigate(Type.GetType("ProjectLifeSaver.Pages." + pivotItem.Name.Remove(0, 4)));
+                pivotItem.Content = contentFrame;
 
-                    pivotItem.Header = ((PageBase)contentFrame.Content).Name.ToUpper();
-                    pivotItem.RequestedTheme = ElementTheme.Light;
-                }
-                catch
-                {
-                    // Some pages are not yet implemented
-                    pivotItem.Header = pivotItem.Name.Remove(0, 4).ToUpper();
-                }
+                pivotItem.Header = ((PageBase)contentFrame.Content).Name.ToUpper();
+                pivotItem.RequestedTheme = ElementTheme.Light;
             }
         }
 

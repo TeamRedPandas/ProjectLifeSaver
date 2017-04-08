@@ -16,7 +16,6 @@
                           >
             <PivotItem x:Name="PiI_Home"/>
             <PivotItem x:Name="PiI_PhoneBook"/>
-            <PivotItem x:Name="PiI_History"/>
             <PivotItem x:Name="PiI_Profile"/>
         </ui:AdvancedPivot>
 
@@ -25,6 +24,7 @@
               RequestedTheme="Dark"
               >
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
@@ -33,13 +33,21 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <ListView ItemsSource="{x:Bind AiMessages}"
+            <ui:PageHeader Content="ASSISTANT"
+                           Grid.ColumnSpan="2"
+                           />
+
+            <ListView x:Name="LV_Messages"
+                      ItemsSource="{x:Bind AiMessages}"
                       SelectionMode="None"
+                      Grid.Row="1"
                       Grid.ColumnSpan="2"
                       >
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        <Setter Property="Margin" Value="0,15,0,0"/>
+                        <Setter Property="Padding" Value="10,0"/>
                     </Style>
                 </ListView.ItemContainerStyle>
                 <ListView.ItemTemplateSelector>
@@ -65,6 +73,7 @@
                                         <TextBlock Text="{x:Bind Received, Mode=OneWay}"
                                                    HorizontalAlignment="Left"
                                                    Style="{StaticResource DescriptionTextBlock}"
+                                                   RequestedTheme="Light"
                                                    />
                                     </StackPanel>
                                 </StackPanel>
@@ -105,7 +114,7 @@
                                 PlaceholderText="How may we help you?"
                                 FontSize="24"
                                 Height="48"
-                                Grid.Row="1"
+                                Grid.Row="2"
                                 SubmitKeyDown="SendMessage"
                                 />
 
@@ -114,7 +123,7 @@
                     FontSize="24"
                     Width="48"
                     Height="48"
-                    Grid.Row="1"
+                    Grid.Row="2"
                     Grid.Column="1"
                     Click="SendMessage"
                     />
