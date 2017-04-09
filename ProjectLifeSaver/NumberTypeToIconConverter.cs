@@ -1,6 +1,7 @@
 ﻿using ProjectLifeSaver.Models;
 using System;
 using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Media;
 
 namespace ProjectLifeSaver
 {
@@ -14,7 +15,7 @@ namespace ProjectLifeSaver
                 case Number.Types.Ambulance:
                 case Number.Types.FireDept:
                 case Number.Types.Sos:
-                    return "ms-appx:Assets/" + value.ToString() + ".png";
+                    return new Uri("ms-appx:///Assets/" + value.ToString() + ".png");
                 default: throw new Exception(@"You're not doing it right ¯\_ツ_/¯");
             }
         }

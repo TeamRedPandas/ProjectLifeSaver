@@ -33,18 +33,25 @@
                             </Grid.Resources>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="0.22*"/>
-                                <ColumnDefinition/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
                             </Grid.ColumnDefinitions>
-                            
-                            <!--
-                            <Image Source="{x:Bind Type, Converter={StaticResource NumberTypeToIconConverter}, Mode=OneWay}"/>
-                            -->
-                            
-                            <TextBlock FontWeight="SemiBold">
+
+
+                            <Image Height="24" Width="24">
+                                <Image.Source>
+                                    <BitmapImage UriSource="{x:Bind Type, Converter={StaticResource NumberTypeToIconConverter}, Mode=OneWay}"/>
+                                </Image.Source>
+                            </Image>
+
+
+                            <TextBlock FontWeight="SemiBold"
+                                       Grid.Column="1">
                                 <Run Text="{x:Bind Type, Converter={StaticResource NumberTypeToStringConverter}, Mode=OneWay}"/>:
                             </TextBlock>
                             <TextBlock Text="{x:Bind DialNumber, Mode=OneWay}"
-                                       Grid.Column="1"
+                                       Grid.Column="2"
                                        />
                         </Grid>
                     </DataTemplate>
@@ -65,26 +72,31 @@
                 
                 <TextBlock Text="CZECH REPUBLIC (based on your current location)"
                            FontWeight="SemiBold"
+                           FontSize="20"
                            />
                 <ListView ItemsSource="{x:Bind CzechRepublic}"/>
 
                 <TextBlock Text="AUSTRIA"
                            FontWeight="SemiBold"
+                           FontSize="20"
                            />
                 <ListView ItemsSource="{x:Bind Austria}"/>
 
                 <TextBlock Text="GERMANY"
                            FontWeight="SemiBold"
+                           FontSize="20"
                            />
                 <ListView ItemsSource="{x:Bind Germany}"/>
 
                 <TextBlock Text="POLAND"
                            FontWeight="SemiBold"
+                           FontSize="20"
                            />
                 <ListView ItemsSource="{x:Bind Poland}"/>
 
                 <TextBlock Text="SLOVAKIA"
                            FontWeight="SemiBold"
+                           FontSize="20"
                            />
                 <ListView ItemsSource="{x:Bind Slovakia}"/>
             </StackPanel>

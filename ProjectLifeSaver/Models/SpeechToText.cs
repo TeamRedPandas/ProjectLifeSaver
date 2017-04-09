@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Windows.Media.SpeechRecognition;
 using Windows.Media.SpeechSynthesis;
@@ -14,8 +15,7 @@ namespace ProjectLifeSaver.Models
         {
             string recognizedText = string.Empty;
 
-            using (SpeechRecognizer recognizer =
-              new Windows.Media.SpeechRecognition.SpeechRecognizer())
+            using (SpeechRecognizer recognizer = new SpeechRecognizer())
             {
                 await recognizer.CompileConstraintsAsync();
 
@@ -31,9 +31,16 @@ namespace ProjectLifeSaver.Models
 
         public static async Task TextToSpeechAsync(MediaElement e, string text)
         {
-            SpeechSynthesisStream synthesisStream = await synthesizer.SynthesizeTextToStreamAsync(text);
-            e.SetSource(synthesisStream, synthesisStream.ContentType);
-            e.Play();
+            try
+            {
+                SpeechSynthesisStream synthesisStream = await new SpeechSynthesizer().SynthesizeTextToStreamAsync(text);
+                e.SetSource(synthesisStream, synthesisStream.ContentType);
+                e.Play();
+            }
+            catch
+            {
+                Debug.WriteLine("No Synthesizer installed on your device");
+            }
         }
     }
 }
