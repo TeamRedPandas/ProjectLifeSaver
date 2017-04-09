@@ -11,7 +11,7 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ui:AdvancedPivot x:Name="APi_Main"
                           HeaderBackground="{ThemeResource SystemControlBackgroundAccentBrush}"
-                          RequestedTheme="{StaticResource AccentTheme}"
+                          RequestedTheme="{ThemeResource AccentTheme}"
                           Loaded="APi_Main_Loaded"
                           >
             <PivotItem x:Name="PiI_Home"/>
@@ -58,12 +58,12 @@
                                             RequestedTheme="Dark"
                                             >
                                     <Polygon Points="15,0 15,15 0,15"
-                                             Fill="{StaticResource LightAccentBrush}"
+                                             Fill="{ThemeResource LightAccentBrush}"
                                              HorizontalAlignment="Right"
                                              Margin="0,0,5,0"
                                              />
 
-                                    <StackPanel Background="{StaticResource LightAccentBrush}"
+                                    <StackPanel Background="{ThemeResource LightAccentBrush}"
                                                 CornerRadius="3"
                                                 Padding="6"
                                                 >

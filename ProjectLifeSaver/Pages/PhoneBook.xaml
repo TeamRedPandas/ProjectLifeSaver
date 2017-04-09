@@ -19,10 +19,9 @@
                         />
 
         <ScrollViewer VerticalScrollBarVisibility="Auto"
-                      Padding="{StaticResource ContentMargin}"
                       Grid.Row="1"
                       >
-            <StackPanel>
+            <StackPanel Margin="{StaticResource ContentMargin}">
                 <StackPanel.Resources>
                     <DataTemplate x:Key="NumberDataTemplate" x:DataType="models:Number">
                         <Grid>
@@ -32,24 +31,26 @@
                                 </Style>
                             </Grid.Resources>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.22*"/>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="120"/>
+                                <ColumnDefinition />
                             </Grid.ColumnDefinitions>
 
 
-                            <Image Height="24" Width="24">
+                            <Image Width="16"
+                                   Height="16"
+                                   >
                                 <Image.Source>
                                     <BitmapImage UriSource="{x:Bind Type, Converter={StaticResource NumberTypeToIconConverter}, Mode=OneWay}"/>
                                 </Image.Source>
                             </Image>
 
-
                             <TextBlock FontWeight="SemiBold"
-                                       Grid.Column="1">
+                                       Grid.Column="1"
+                                       >
                                 <Run Text="{x:Bind Type, Converter={StaticResource NumberTypeToStringConverter}, Mode=OneWay}"/>:
                             </TextBlock>
+                            
                             <TextBlock Text="{x:Bind DialNumber, Mode=OneWay}"
                                        Grid.Column="2"
                                        />
@@ -59,6 +60,7 @@
                     <Style TargetType="ListView">
                         <Setter Property="ItemTemplate" Value="{StaticResource NumberDataTemplate}"/>
                         <Setter Property="SelectionMode" Value="None"/>
+                        <Setter Property="ScrollViewer.VerticalScrollMode" Value="Disabled"/>
                         <Setter Property="ItemContainerStyle">
                             <Setter.Value>
                                 <Style TargetType="ListViewItem">
@@ -73,6 +75,7 @@
                 <TextBlock Text="CZECH REPUBLIC (based on your current location)"
                            FontWeight="SemiBold"
                            FontSize="20"
+                           TextWrapping="WrapWholeWords"
                            />
                 <ListView ItemsSource="{x:Bind CzechRepublic}"/>
 
